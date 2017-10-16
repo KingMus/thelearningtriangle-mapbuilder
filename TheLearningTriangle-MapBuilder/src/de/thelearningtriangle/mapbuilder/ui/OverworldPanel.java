@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 public class OverworldPanel extends JPanel
 {
 
-	private int mapSize;
+	private int[][] map;
 
-	public OverworldPanel(int mapSize)
+	public OverworldPanel(int[][] map)
 	{
-		this.mapSize = mapSize;
+		this.map = map;
 	}
 
 	public void paint(Graphics g)
@@ -22,7 +22,7 @@ public class OverworldPanel extends JPanel
 		try
 		{
 
-			drawOverworld(g, mapSize);
+			drawOverworld(g, map);
 
 		} catch (Exception e)
 		{
@@ -31,14 +31,14 @@ public class OverworldPanel extends JPanel
 
 	}
 
-	private void drawOverworld(Graphics g, int mapSize)
+	private void drawOverworld(Graphics g, int[][] map)
 	{
 
-		for (int rowNumber = 0; rowNumber < mapSize; rowNumber++)
+		for (int rowNumber = 0; rowNumber < map.length; rowNumber++)
 		{
-			for (int columnNumber = 0; columnNumber < mapSize; columnNumber++)
+			for (int columnNumber = 0; columnNumber < map.length; columnNumber++)
 			{
-
+				g.fillRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
 			}
 		}
 	}
