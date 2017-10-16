@@ -12,7 +12,7 @@ public class OverworldPanel extends JPanel
 {
 
 	private int[][] map;
-	private boolean gridEnabled = true;
+	private boolean gridEnabled = false;
 
 	public OverworldPanel(int[][] map)
 	{
