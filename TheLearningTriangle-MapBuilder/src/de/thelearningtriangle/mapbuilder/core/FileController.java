@@ -18,11 +18,12 @@ public class FileController
 	 * this method reads a file and creates an int-Arrays from the values
 	 * @return int[][]>
 	 * @author Marco Mueller
+	 * @param fileName
 	 */
-	public static int[][] parseMapFromFile()
+	public static int[][] parseMapFromFile(String fileName)
 	{
 
-		String file = System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/Map.txt";
+		String file = System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/"+fileName;
 		BufferedReader br = null;
 		String splitChar = ",";
 

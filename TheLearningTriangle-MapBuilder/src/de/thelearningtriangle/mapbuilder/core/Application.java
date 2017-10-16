@@ -1,6 +1,6 @@
 package de.thelearningtriangle.mapbuilder.core;
 
-import javax.jws.WebParam.Mode;
+import javax.swing.JOptionPane;
 
 import de.thelearningtriangle.mapbuilder.ui.MainWindow;
 
@@ -19,7 +19,8 @@ public class Application
 			map = MapController.generateBlankMap(10);
 		} else
 		{
-			map = FileController.parseMapFromFile();
+			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
+			map = FileController.parseMapFromFile(fileName);
 		}
 		MainWindow mainW = new MainWindow(map);
 	}
