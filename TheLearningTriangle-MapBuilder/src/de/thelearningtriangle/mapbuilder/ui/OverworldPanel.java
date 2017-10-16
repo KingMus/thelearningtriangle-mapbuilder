@@ -5,18 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 import de.thelearningtriangle.mapbuilder.core.MouseController;
 
 public class OverworldPanel extends JPanel
 {
 
 	private int[][] map;
+	private boolean gridEnabled = true;
 
 	public OverworldPanel(int[][] map)
 	{
 		this.map = map;
 		
 		this.addMouseListener(new MouseController(this));
+		
 	}
 
 	public void paint(Graphics g)
@@ -64,8 +67,13 @@ public class OverworldPanel extends JPanel
 					break;
 				}
 				
-				
 				g.fillRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
+				
+				if(gridEnabled){
+					g.setColor(Color.WHITE);
+					g.drawRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
+				}
+				
 			}
 		}
 	}
@@ -78,5 +86,16 @@ public class OverworldPanel extends JPanel
 	public void setMap(int[][] map)
 	{
 		this.map = map;
+	}
+	
+	public void setGridEnabled(boolean gridEnabled)
+	{
+		this.gridEnabled = gridEnabled;
+		repaint();
+	}
+
+	public boolean isGridEnabled()
+	{
+		return gridEnabled;
 	}
 }

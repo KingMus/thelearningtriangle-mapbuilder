@@ -34,9 +34,6 @@ public class MouseController implements MouseListener
 			if (e.isShiftDown())
 			{
 				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
-			} else if(e.isAltDown()){
-				String fileName = JOptionPane.showInputDialog("Bennene deine Map");
-				FileController.parseFileFromMap(map, fileName);
 			} else
 			{
 				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
