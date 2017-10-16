@@ -23,7 +23,12 @@ public class MouseController implements MouseListener
 		
 		int[][] map = overworldPanel.getMap();
 		
-		map[1][1] = map[1][1]++ > 4 ? 1 : map[1][1]++;
+		if(e.isShiftDown()){
+			map[1][1] = map[1][1]-- < 2 ? 5 : map[1][1]--;
+		}else {
+			map[1][1] = map[1][1]++ > 4 ? 1 : map[1][1]++;
+		}
+		
 		
 		overworldPanel.setMap(map);
 		overworldPanel.repaint();
