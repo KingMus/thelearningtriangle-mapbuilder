@@ -40,7 +40,7 @@ public class OverworldPanel extends JPanel
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++)
 			{
 				
-				switch (map[rowNumber][columnNumber])
+				switch (map[columnNumber][rowNumber])
 				{
 				case 1:
 					g.setColor(Color.GRAY);

@@ -7,7 +7,7 @@ public class Application
 
 	public static void main(String[] args)
 	{
-		int[][] map = new int[20][20];
+		int[][] map = FileController.parseMapFromFile();
 		MainWindow mainW = new MainWindow(map);
 	}
 	
