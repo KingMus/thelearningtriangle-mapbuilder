@@ -1,5 +1,6 @@
 package de.thelearningtriangle.mapbuilder.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -38,6 +39,29 @@ public class OverworldPanel extends JPanel
 		{
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++)
 			{
+				
+				switch (map[rowNumber][columnNumber])
+				{
+				case 1:
+					g.setColor(Color.GRAY);
+					break;
+				case 2:
+					g.setColor(Color.BLACK);
+					break;
+				case 3:
+					g.setColor(Color.MAGENTA);
+					break;
+				case 4:
+					g.setColor(Color.RED);
+					break;
+				case 5:
+					g.setColor(Color.GREEN);
+					break;
+				default:
+					break;
+				}
+				
+				
 				g.fillRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
 			}
 		}
