@@ -16,7 +16,7 @@ public class Application
 
 		if (mode == 1)
 		{
-			map = MapController.generateBlankMap(20);
+			map = MapController.generateBlankMap(10);
 		} else
 		{
 			map = FileController.parseMapFromFile();
