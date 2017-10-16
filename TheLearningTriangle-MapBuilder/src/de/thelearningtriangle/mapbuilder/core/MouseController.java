@@ -30,7 +30,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 			if (e.isShiftDown()) {
 				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
-			} if (e.isAltDown()) {
+			} else if (e.isAltDown()) {
 				map[fieldY][fieldX] = 9;
 			}else {
 				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
