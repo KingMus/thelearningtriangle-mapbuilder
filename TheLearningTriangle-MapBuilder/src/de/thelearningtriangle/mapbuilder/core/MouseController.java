@@ -23,8 +23,8 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 		int[][] map = overworldPanel.getMap();
 
-		int fieldX = e.getX() / (600 / map.length);
-		int fieldY = e.getY() / (600 / map.length);
+		int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
+		int fieldY = e.getY() / (overworldPanel.getWindowSize() / map.length);
 
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
 
@@ -70,8 +70,8 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	public void mouseDragged(MouseEvent e) {
 		int[][] map = overworldPanel.getMap();
 
-		int fieldX = e.getX() / (600 / map.length);
-		int fieldY = e.getY() / (600 / map.length);
+		int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
+		int fieldY = e.getY() / (overworldPanel.getWindowSize() / map.length);
 
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
 			if (e.isShiftDown()) {

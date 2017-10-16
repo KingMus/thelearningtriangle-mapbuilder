@@ -13,10 +13,12 @@ public class OverworldPanel extends JPanel
 
 	private int[][] map;
 	private boolean gridEnabled = false;
+	private int windowSize;
 
-	public OverworldPanel(int[][] map)
+	public OverworldPanel(int[][] map, int windowSize)
 	{
 		this.map = map;
+		this.windowSize = windowSize;
 		
 		MouseController mouseController = new MouseController(this);
 		
@@ -73,11 +75,11 @@ public class OverworldPanel extends JPanel
 					break;
 				}
 				
-				g.fillRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
+				g.fillRect(rowNumber*windowSize/map.length, columnNumber*windowSize/map.length, windowSize/map.length, windowSize/map.length);
 				
 				if(gridEnabled){
 					g.setColor(Color.WHITE);
-					g.drawRect(rowNumber*600/map.length, columnNumber*600/map.length, 600/map.length, 600/map.length);
+					g.drawRect(rowNumber*windowSize/map.length, columnNumber*windowSize/map.length, windowSize/map.length, windowSize/map.length);
 				}
 				
 			}
@@ -103,5 +105,10 @@ public class OverworldPanel extends JPanel
 	public boolean isGridEnabled()
 	{
 		return gridEnabled;
+	}
+
+	public int getWindowSize()
+	{
+		return windowSize;
 	}
 }
