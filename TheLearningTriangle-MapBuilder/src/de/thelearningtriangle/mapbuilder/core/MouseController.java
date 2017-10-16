@@ -3,6 +3,8 @@ package de.thelearningtriangle.mapbuilder.core;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
 import de.thelearningtriangle.mapbuilder.ui.OverworldPanel;
 
 public class MouseController implements MouseListener
@@ -33,7 +35,8 @@ public class MouseController implements MouseListener
 			{
 				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
 			} else if(e.isAltDown()){
-				FileController.parseFileFromMap(map, ""+e.getX()+e.getY());
+				String fileName = JOptionPane.showInputDialog("Bennene deine Map");
+				FileController.parseFileFromMap(map, fileName);
 			} else
 			{
 				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;

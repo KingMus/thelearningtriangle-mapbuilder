@@ -79,14 +79,14 @@ public class FileController
 
 	}
 
-	public static void parseFileFromMap(int[][] map, String randomString)
+	public static void parseFileFromMap(int[][] map, String fileName)
 	{
 		PrintWriter fileWriter = null;
 
 		try
 		{
 
-			fileWriter = new PrintWriter(new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/Map"+randomString));
+			fileWriter = new PrintWriter(new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/"+fileName));
 
 			for (int i = 0; i < map.length; i++)
 			{
