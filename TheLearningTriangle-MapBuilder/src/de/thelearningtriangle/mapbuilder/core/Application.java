@@ -16,7 +16,7 @@ public class Application
 
 		if (mode == 1)
 		{
-			map = MapController.generateBlankMap(40);
+			map = MapController.generateBlankMap(15);
 		} else {
 			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
 			map = FileController.parseMapFromFile(fileName);

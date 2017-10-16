@@ -30,7 +30,9 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 			if (e.isShiftDown()) {
 				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
-			} else {
+			} if (e.isAltDown()) {
+				map[fieldY][fieldX] = 9;
+			}else {
 				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
 			}
 
@@ -72,7 +74,11 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		int fieldY = e.getY() / (600 / map.length);
 
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
+			if (e.isShiftDown()) {
+				map[fieldY][fieldX] = 1;
+			} else {
 				map[fieldY][fieldX] = 2;
+			}
 		}
 
 		overworldPanel.setMap(map);

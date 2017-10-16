@@ -66,6 +66,9 @@ public class OverworldPanel extends JPanel
 				case 5:
 					g.setColor(Color.GREEN);
 					break;
+				case 9:
+					g.setColor(Color.LIGHT_GRAY);
+					break;
 				default:
 					break;
 				}
