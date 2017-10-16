@@ -18,7 +18,10 @@ public class OverworldPanel extends JPanel
 	{
 		this.map = map;
 		
-		this.addMouseListener(new MouseController(this));
+		MouseController mouseController = new MouseController(this);
+		
+		this.addMouseListener(mouseController);
+		this.addMouseMotionListener(mouseController);
 		
 	}
 
