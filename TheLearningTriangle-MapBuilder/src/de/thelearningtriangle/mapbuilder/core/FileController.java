@@ -3,7 +3,9 @@ package de.thelearningtriangle.mapbuilder.core;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,40 @@ public class FileController
 		}
 
 		return map;
+
+	}
+
+	public static void parseFileFromMap(int[][] map, String randomString)
+	{
+		PrintWriter fileWriter = null;
+
+		try
+		{
+
+			fileWriter = new PrintWriter(new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/Map"+randomString));
+
+			for (int i = 0; i < map.length; i++)
+			{
+				for (int j = 0; j < map.length; j++)
+				{
+						fileWriter.print(""+map[i][j]);
+					
+					if(j<map.length-1){
+						fileWriter.print(",");
+					}
+					
+				}
+				
+				fileWriter.println();
+			}
+
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		} finally
+		{			if (fileWriter != null)
+				fileWriter.close();
+		}
 
 	}
 	
