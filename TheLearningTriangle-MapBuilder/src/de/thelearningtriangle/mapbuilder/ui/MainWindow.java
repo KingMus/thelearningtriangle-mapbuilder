@@ -10,13 +10,12 @@ public class MainWindow extends JFrame
 {
 	private OverworldPanel	overworldPanel;
 
-	public MainWindow()
+	public MainWindow(int mapSize)
 	{
 
-		overworldPanel = new OverworldPanel();
-//		settingsPanel = new SettingsPanel();
+		overworldPanel = new OverworldPanel(mapSize);
 
-		this.setSize(400+6, 400+29);
+		this.setSize(606, 629);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
