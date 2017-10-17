@@ -14,14 +14,16 @@ public class OverworldPanel extends JPanel {
 	private int[][] map;
 	private boolean gridEnabled = false;
 	private boolean imageEnabled = false;
-	private boolean controlsEnabled = true;
+	private boolean controlsEnabled = false;
 	private int windowSize;
+	
+	private MouseController mouseController;
 
 	public OverworldPanel(int[][] map, int windowSize) {
 		this.map = map;
 		this.windowSize = windowSize;
 
-		MouseController mouseController = new MouseController(this);
+		mouseController = new MouseController(this);
 
 		this.addMouseListener(mouseController);
 		this.addMouseMotionListener(mouseController);
@@ -45,7 +47,9 @@ public class OverworldPanel extends JPanel {
 
 		for (int rowNumber = 0; rowNumber < map.length; rowNumber++) {
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++) {
-
+				
+				drawBottomLine(g);
+				
 				drawMatchingField(g, map, rowNumber, columnNumber);
 
 				if (gridEnabled) {
@@ -55,27 +59,64 @@ public class OverworldPanel extends JPanel {
 				}
 
 				if (controlsEnabled) {
-					g.setColor(Color.WHITE);
-					g.fillRect(60, 60, 300, 320);
-
-					g.setColor(Color.BLACK);
-					int fontsize = 15;
-					Font arial = new Font("Arial", Font.BOLD, fontsize);
-					g.setFont(arial);
-
-					g.drawString("HOW TO USE", 70, 80);
-					g.drawString("Left/Right Click - Change Field", 70, 130);
-					g.drawString("Move Mouse - Draw Walls", 70, 160);
-					g.drawString("Move Mouse + SHIFT - Draw Normal", 70, 190);
-					g.drawString("Click + SHIFT - Set Spawn", 70, 220);
-					g.drawString("G - Show Grid", 70, 250);
-					g.drawString("I - Change to Image Mode", 70, 280);
-					g.drawString("S - Save Map", 70, 310);
-					g.drawString("C - Close/open this menu", 70, 360);
+					drawMenu(g);
 				}
 
 			}
 		}
+	}
+
+	private void drawMenu(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.fillRect(60, 60, 300, 320);
+
+		g.setColor(Color.BLACK);
+		
+		g.setFont(new Font("Arial", Font.BOLD, 12));
+		g.drawString("HOW TO USE", 70, 80);
+		g.drawString("Left/Right Click - Change Field", 70, 130);
+		g.drawString("Move Mouse - Draw Field", 70, 160);
+		g.drawString("Middle Mouse - Change Field for Mouse Move", 70, 190);
+		g.drawString("Click + SHIFT - Set Spawn", 70, 220);
+		g.drawString("G - Show Grid", 70, 250);
+		g.drawString("I - Change to Image Mode", 70, 280);
+		g.drawString("S - Save Map", 70, 310);
+		g.drawString("C - Close/open this menu", 70, 360);
+	}
+
+	private void drawBottomLine(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, windowSize, windowSize, 40);
+		
+		g.setColor(Color.WHITE);
+		Font arial = new Font("Arial", Font.BOLD, 10);
+		g.setFont(arial);
+		g.drawString("C - Controls", 15, windowSize+13);
+		g.drawString("S - Save", 15, windowSize+23);
+		
+		String fieldType;
+		switch (mouseController.getActualFieldToDraw()) {
+		case 1:
+			fieldType = "Normal";
+			break;
+		case 2:
+			fieldType = "Wall";
+			break;
+		case 3:
+			fieldType = "Poison";
+			break;
+		case 4:
+			fieldType = "Death";
+			break;
+		case 5:
+			fieldType = "Energy";
+			break;
+		default:
+			fieldType = "Normal";
+			break;
+		}
+		
+		g.drawString("Actual MouseMove-Field: "+fieldType, 15, windowSize+33);
 	}
 
 	private void drawMatchingField(Graphics g, int[][] map, int rowNumber, int columnNumber) {

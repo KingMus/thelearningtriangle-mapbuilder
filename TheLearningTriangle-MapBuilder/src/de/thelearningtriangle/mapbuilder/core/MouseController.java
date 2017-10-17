@@ -12,6 +12,8 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	private OverworldPanel overworldPanel;
 
+	private int actualFieldToDraw = 2;
+
 	public MouseController(OverworldPanel overworldPanel) {
 
 		this.overworldPanel = overworldPanel;
@@ -21,24 +23,32 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		int[][] map = overworldPanel.getMap();
+		if (e.getButton() == MouseEvent.BUTTON2) {
 
-		int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
-		int fieldY = e.getY() / (overworldPanel.getWindowSize() / map.length);
+			actualFieldToDraw = actualFieldToDraw++ > 4 ? 1 : actualFieldToDraw++;
+			
+		} else {
 
-		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
+			int[][] map = overworldPanel.getMap();
 
-			if (e.getButton() == MouseEvent.BUTTON3) {
-				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
-			} else if (e.isShiftDown()) {
-				map[fieldY][fieldX] = 9;
-			}else {
-				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
+			int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
+			int fieldY = e.getY() / (overworldPanel.getWindowSize() / map.length);
+
+			if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
+
+				if (e.getButton() == MouseEvent.BUTTON3) {
+					map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
+				} else if (e.isShiftDown()) {
+					map[fieldY][fieldX] = 9;
+				} else {
+					map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
+				}
+
 			}
 
+			overworldPanel.setMap(map);
 		}
 
-		overworldPanel.setMap(map);
 		overworldPanel.repaint();
 	}
 
@@ -74,11 +84,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		int fieldY = e.getY() / (overworldPanel.getWindowSize() / map.length);
 
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
-			if (e.isShiftDown()) {
-				map[fieldY][fieldX] = 1;
-			} else {
-				map[fieldY][fieldX] = 2;
-			}
+				map[fieldY][fieldX] = actualFieldToDraw;
 		}
 
 		overworldPanel.setMap(map);
@@ -90,6 +96,14 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public int getActualFieldToDraw() {
+		return actualFieldToDraw;
+	}
+
+	public void setActualFieldToDraw(int actualFieldToDraw) {
+		this.actualFieldToDraw = actualFieldToDraw;
 	}
 
 }

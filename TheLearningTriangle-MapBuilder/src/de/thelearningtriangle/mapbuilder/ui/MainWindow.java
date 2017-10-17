@@ -1,6 +1,8 @@
 package de.thelearningtriangle.mapbuilder.ui;
 
 import java.awt.GridLayout;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
 
@@ -17,7 +19,7 @@ public class MainWindow extends JFrame
 
 		overworldPanel = new OverworldPanel(map, windowSize);
 
-		this.setSize(windowSize+6, windowSize+29);
+		this.setSize(windowSize+6, windowSize+69);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
