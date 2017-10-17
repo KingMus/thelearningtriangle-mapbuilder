@@ -56,7 +56,9 @@ public class OverworldPanel extends JPanel {
 
 				if (controlsEnabled) {
 					g.setColor(Color.WHITE);
+					g.fillRect(60, 60, 300, 320);
 
+					g.setColor(Color.BLACK);
 					int fontsize = 15;
 					Font arial = new Font("Arial", Font.BOLD, fontsize);
 					g.setFont(arial);
@@ -68,7 +70,8 @@ public class OverworldPanel extends JPanel {
 					g.drawString("Click + SHIFT - Set Spawn", 70, 220);
 					g.drawString("G - Show Grid", 70, 250);
 					g.drawString("I - Change to Image Mode", 70, 280);
-					g.drawString("C - Close/open this menu", 70, 330);
+					g.drawString("S - Save Map", 70, 310);
+					g.drawString("C - Close/open this menu", 70, 360);
 				}
 
 			}
@@ -78,46 +81,22 @@ public class OverworldPanel extends JPanel {
 	private void drawMatchingField(Graphics g, int[][] map, int rowNumber, int columnNumber) {
 		switch (map[columnNumber][rowNumber]) {
 		case 1:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.normalField);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.GRAY);
-			}
 			break;
 		case 2:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.wallField);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.BLACK);
-			}
 			break;
 		case 3:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.poisonField);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.MAGENTA);
-			}
 			break;
 		case 4:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.deathField);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.RED);
-			}
 			break;
 		case 5:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.energyField);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.GREEN);
-			}
 			break;
 		case 9:
-			if (imageEnabled) {
 				drawMatchingImage(rowNumber, columnNumber, g, ImageLoader.triangle);
-			} else {
-				drawMatchingRect(rowNumber, columnNumber, g, Color.LIGHT_GRAY);
-			}
 			break;
 		default:
 			break;
@@ -127,12 +106,6 @@ public class OverworldPanel extends JPanel {
 	public void drawMatchingImage(int rowNumber, int columnNumber, Graphics g, Image field) {
 		g.drawImage(field, rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
 				windowSize / map.length, windowSize / map.length, this);
-	}
-
-	public void drawMatchingRect(int rowNumber, int columnNumber, Graphics g, Color color) {
-		g.setColor(color);
-		g.fillRect(rowNumber * windowSize / map.length, columnNumber * windowSize / map.length, windowSize / map.length,
-				windowSize / map.length);
 	}
 
 	public int[][] getMap() {

@@ -12,7 +12,7 @@ public class Application
 	{
 
 		@SuppressWarnings("unused")
-		ImageLoader imageLoader = new ImageLoader("RPG");
+		ImageLoader imageLoader = new ImageLoader("Steven");
 		
 		// 1=new 2=file
 		int mode = 1;
@@ -22,7 +22,7 @@ public class Application
 
 		if (mode == 1)
 		{
-			map = MapController.generateBlankMap(20);
+			map = MapController.generateBlankMap(12);
 		} else {
 			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
 			map = FileController.parseMapFromFile(fileName);

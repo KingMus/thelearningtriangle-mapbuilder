@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
+import de.thelearningtriangle.mapbuilder.ui.ImageLoader;
 import de.thelearningtriangle.mapbuilder.ui.MainWindow;
 import de.thelearningtriangle.mapbuilder.ui.OverworldPanel;
 
@@ -12,6 +13,7 @@ public class KeyboardController implements KeyListener
 {
 
 	private MainWindow mainWindow;
+	private int decider=0;
 
 	public KeyboardController(MainWindow mainWindow)
 	{
@@ -36,6 +38,23 @@ public class KeyboardController implements KeyListener
 		
 		if (e.getKeyCode() == KeyEvent.VK_I)
 		{
+			decider = decider++ >= 2 ? 0 : decider++;
+			String newStyle;
+			switch (decider) {
+			case 0:
+				newStyle="Steven";
+				break;
+			case 1:
+				newStyle="Classic";
+				break;
+			case 2:
+				newStyle="RPG";
+				break;
+			default:
+				newStyle="Steven";
+				break;
+			}
+			ImageLoader imageLoader = new ImageLoader(newStyle);
 			mainWindow.getOverworldPanel().setImageEnabled(!mainWindow.getOverworldPanel().isImageEnabled());
 		}
 		
