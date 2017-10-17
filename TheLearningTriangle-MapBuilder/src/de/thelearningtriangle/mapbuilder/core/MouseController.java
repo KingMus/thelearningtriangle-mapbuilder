@@ -28,9 +28,9 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
 
-			if (e.isShiftDown()) {
+			if (e.getButton() == MouseEvent.BUTTON3) {
 				map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
-			} else if (e.isAltDown()) {
+			} else if (e.isShiftDown()) {
 				map[fieldY][fieldX] = 9;
 			}else {
 				map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;

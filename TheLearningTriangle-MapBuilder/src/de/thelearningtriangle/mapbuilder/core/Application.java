@@ -12,7 +12,7 @@ public class Application
 	{
 
 		@SuppressWarnings("unused")
-		ImageLoader imageLoader = new ImageLoader("Classic");
+		ImageLoader imageLoader = new ImageLoader("RPG");
 		
 		// 1=new 2=file
 		int mode = 1;

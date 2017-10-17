@@ -39,6 +39,11 @@ public class KeyboardController implements KeyListener
 			mainWindow.getOverworldPanel().setImageEnabled(!mainWindow.getOverworldPanel().isImageEnabled());
 		}
 		
+		if (e.getKeyCode() == KeyEvent.VK_C)
+		{
+			mainWindow.getOverworldPanel().setControlsEnabled(!mainWindow.getOverworldPanel().isControlsEnabled());
+		}
+		
 		if (e.getKeyCode() == KeyEvent.VK_S)
 		{
 			String fileName = JOptionPane.showInputDialog("Bennene deine Map");

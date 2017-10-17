@@ -1,12 +1,12 @@
 package de.thelearningtriangle.mapbuilder.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JPanel;
 
-import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 import de.thelearningtriangle.mapbuilder.core.MouseController;
 
 public class OverworldPanel extends JPanel {
@@ -14,6 +14,7 @@ public class OverworldPanel extends JPanel {
 	private int[][] map;
 	private boolean gridEnabled = false;
 	private boolean imageEnabled = false;
+	private boolean controlsEnabled = true;
 	private int windowSize;
 
 	public OverworldPanel(int[][] map, int windowSize) {
@@ -48,9 +49,26 @@ public class OverworldPanel extends JPanel {
 				drawMatchingField(g, map, rowNumber, columnNumber);
 
 				if (gridEnabled) {
-					g.setColor(Color.WHITE);
+					g.setColor(Color.BLACK);
 					g.drawRect(rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
 							windowSize / map.length, windowSize / map.length);
+				}
+
+				if (controlsEnabled) {
+					g.setColor(Color.WHITE);
+
+					int fontsize = 15;
+					Font arial = new Font("Arial", Font.BOLD, fontsize);
+					g.setFont(arial);
+
+					g.drawString("HOW TO USE", 70, 80);
+					g.drawString("Left/Right Click - Change Field", 70, 130);
+					g.drawString("Move Mouse - Draw Walls", 70, 160);
+					g.drawString("Move Mouse + SHIFT - Draw Normal", 70, 190);
+					g.drawString("Click + SHIFT - Set Spawn", 70, 220);
+					g.drawString("G - Show Grid", 70, 250);
+					g.drawString("I - Change to Image Mode", 70, 280);
+					g.drawString("C - Close/open this menu", 70, 330);
 				}
 
 			}
@@ -141,6 +159,15 @@ public class OverworldPanel extends JPanel {
 
 	public void setImageEnabled(boolean imageEnabled) {
 		this.imageEnabled = imageEnabled;
+		repaint();
+	}
+
+	public boolean isControlsEnabled() {
+		return controlsEnabled;
+	}
+
+	public void setControlsEnabled(boolean controlsEnabled) {
+		this.controlsEnabled = controlsEnabled;
 		repaint();
 	}
 
