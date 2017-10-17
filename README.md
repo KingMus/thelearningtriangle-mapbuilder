@@ -30,6 +30,9 @@ If you want to edit code or something similar, just clone/fork this repository.
 
 ### Screenshots
 
+|  | Different Styles | |
+| :------: | :------: | :------: |
 | Classic | RPG | Stesty |
-| ------ | ------ | ------ |
 | <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapClassic.PNG" width="300"> | <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapRPG.PNG" width="300"> | <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapOld.PNG" width="300"> |
+| Nature | Water | Space |
+| <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapNature.PNG" width="300"> | <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapWater.PNG" width="300"> | <img src="https://github.com/KingMus/thelearningtriangle-mapbuilder/blob/master/TheLearningTriangle-MapBuilder/Images/MapSpace.PNG" width="300"> |
