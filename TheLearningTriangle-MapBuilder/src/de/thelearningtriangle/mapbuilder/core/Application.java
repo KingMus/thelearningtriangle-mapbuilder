@@ -12,7 +12,7 @@ public class Application
 	{
 
 		@SuppressWarnings("unused")
-		ImageLoader imageLoader = new ImageLoader();
+		ImageLoader imageLoader = new ImageLoader("Classic");
 		
 		// 1=new 2=file
 		int mode = 1;
