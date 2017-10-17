@@ -1,25 +1,20 @@
 package de.thelearningtriangle.mapbuilder.ui;
 
 import java.awt.GridLayout;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
 
 import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 
-
 @SuppressWarnings("serial")
-public class MainWindow extends JFrame
-{
-	private OverworldPanel	overworldPanel;
+public class MainWindow extends JFrame {
+	private OverworldPanel overworldPanel;
 
-	public MainWindow(int[][] map, int windowSize)
-	{
+	public MainWindow(int[][] map, int windowSize) {
 
 		overworldPanel = new OverworldPanel(map, windowSize);
 
-		this.setSize(windowSize+6, windowSize+69);
+		this.setSize(windowSize + 6, windowSize + 69);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,8 +26,7 @@ public class MainWindow extends JFrame
 
 	}
 
-	public OverworldPanel getOverworldPanel()
-	{
+	public OverworldPanel getOverworldPanel() {
 		return overworldPanel;
 	}
 }
