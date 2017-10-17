@@ -60,9 +60,6 @@ public class OverworldPanel extends JPanel {
 
 		DrawController.drawBottomLine(windowSize, mouseController, g);
 
-		if (controlsEnabled) {
-			DrawController.drawMenu(g);
-		}
 
 		// draw game map with matching field and draw grid when activated
 		for (int rowNumber = 0; rowNumber < map.length; rowNumber++) {
@@ -78,6 +75,10 @@ public class OverworldPanel extends JPanel {
 							windowSize / map.length, windowSize / map.length);
 				}
 			}
+		}
+		
+		if (controlsEnabled) {
+			DrawController.drawMenu(g);
 		}
 	}
 
