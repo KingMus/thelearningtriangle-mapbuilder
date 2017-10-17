@@ -41,11 +41,11 @@ public class KeyboardController implements KeyListener {
 
 		// if I is pressed, change image mode
 		if (e.getKeyCode() == KeyEvent.VK_I) {
-			decider = decider++ >= 2 ? 0 : decider++;
+			decider = decider++ >= 5 ? 0 : decider++;
 			String newStyle;
 			switch (decider) {
 			case 0:
-				newStyle = "Steven";
+				newStyle = "Stesty";
 				break;
 			case 1:
 				newStyle = "Classic";
@@ -53,8 +53,17 @@ public class KeyboardController implements KeyListener {
 			case 2:
 				newStyle = "RPG";
 				break;
+			case 3:
+				newStyle = "Nature";
+				break;
+			case 4:
+				newStyle = "Water";
+				break;
+			case 5:
+				newStyle = "Space";
+				break;
 			default:
-				newStyle = "Steven";
+				newStyle = "Stesty";
 				break;
 			}
 			ImageLoader imageLoader = new ImageLoader(newStyle);

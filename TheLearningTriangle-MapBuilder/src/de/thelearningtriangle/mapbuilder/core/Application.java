@@ -21,10 +21,10 @@ public class Application {
 	public static void main(String[] args) {
 
 		@SuppressWarnings("unused")
-		ImageLoader imageLoader = new ImageLoader("Steven");
+		ImageLoader imageLoader = new ImageLoader("Stesty");
 
 		int mode = defineMode();
-		int windowSize = 600;
+		int windowSize = 900;
 
 		int[][] map;
 
