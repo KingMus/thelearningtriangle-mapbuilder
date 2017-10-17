@@ -1,6 +1,7 @@
 package de.thelearningtriangle.mapbuilder.core;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,6 +9,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFileChooser;
 
 /**
  * this class loads and writes map from/in files
@@ -26,11 +29,11 @@ public class FileController {
 	 * @return int[][] array, which contains the field types from the map as int
 	 *         values
 	 * @author Marco Mueller
-	 * @param fileName
+	 * @param file
+	 *            - a file which should be used
 	 */
-	public static int[][] parseMapFromFile(String fileName) {
+	public static int[][] parseMapFromFile(File file) {
 
-		String file = System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/" + fileName;
 		BufferedReader br = null;
 		String splitChar = ",";
 
@@ -80,16 +83,17 @@ public class FileController {
 	 * creates a file from a given map
 	 * 
 	 * @param map
-	 * @param fileName
+	 *            - the game map
 	 * @author Marco Mueller
 	 */
-	public static void parseFileFromMap(int[][] map, String fileName) {
+	public static void parseFileFromMap(int[][] map) {
 		PrintWriter fileWriter = null;
 
 		try {
+			JFileChooser fc = new JFileChooser();
+			fc.showSaveDialog(null);
 
-			fileWriter = new PrintWriter(
-					new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/" + fileName));
+			fileWriter = new PrintWriter(new FileWriter(fc.getSelectedFile().getPath()));
 
 			for (int i = 0; i < map.length; i++) {
 				for (int j = 0; j < map.length; j++) {

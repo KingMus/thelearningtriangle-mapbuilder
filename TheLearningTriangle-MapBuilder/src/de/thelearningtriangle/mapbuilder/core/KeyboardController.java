@@ -68,8 +68,7 @@ public class KeyboardController implements KeyListener {
 
 		// if S is pressed, start save action
 		if (e.getKeyCode() == KeyEvent.VK_S) {
-			String fileName = JOptionPane.showInputDialog("Bennene deine Map");
-			FileController.parseFileFromMap(mainWindow.getOverworldPanel().getMap(), fileName);
+			FileController.parseFileFromMap(mainWindow.getOverworldPanel().getMap());
 		}
 
 	}
