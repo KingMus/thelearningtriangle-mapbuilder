@@ -13,15 +13,16 @@ If you want to edit code or something similar, just clone/fork this repository.
 * After you ran the application, select mode (new map or load map).
 * When in editor, use the following controls:
 
-| Key | Action |
-| :------: | ------ |
+| Button | Action |
+| :------: | :------: |
+| |
+| <b>Keyboard</b> |
 | C | open menu |
 | G | enable grid |
 | I | switch through image modes |
 | S | save edited map |
-
-| Mouse | Action |
-| :------: | ------ |
+| |
+| <b>Mouse</b> |
 | Mouse Buttons (without movement) | change FieldType of current field |
 | Mouse Buttons (with movement) | change every touched field into actual FieldType |
 | Click on Middle Mouse Button | change actual FieldType for Mouse Movement |
