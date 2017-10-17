@@ -28,7 +28,7 @@ public class Application {
 			int mapSize = Integer.parseInt(JOptionPane.showInputDialog("Size of Map:"));
 			map = MapController.generateBlankMap(mapSize);
 		} else {
-			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
+			String fileName = JOptionPane.showInputDialog("Filename?");
 			map = FileController.parseMapFromFile(fileName);
 		}
 
@@ -41,7 +41,7 @@ public class Application {
 	}
 
 	private static int defineMode() {
-		Object[] options = { "Neue Map", "Laden" };
+		Object[] options = { "New...", "Load..." };
 		return JOptionPane.showOptionDialog(null, "New map or load map?", "Map Builder",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, // do not use a custom Icon
 				options, // the titles of buttons
