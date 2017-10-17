@@ -25,7 +25,7 @@ public class Application {
 		int[][] map;
 
 		if (mode == 1) {
-			map = MapController.generateBlankMap(20);
+			map = MapController.generateBlankMap(60);
 		} else {
 			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
 			map = FileController.parseMapFromFile(fileName);
