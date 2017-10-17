@@ -9,8 +9,10 @@ public class ImageLoader {
 	public static Image poisonField;
 	public static Image triangle;
 
-	public ImageLoader(String pfad) {
+	public ImageLoader() {
 
+		String pfad = System.getProperty("user.dir").replace('\\', '/');
+		
 		ImageIcon energyFieldIcon = new ImageIcon(pfad + "/Images/Style-Classic_Energy_Field.png");
 		energyField = energyFieldIcon.getImage();
 		ImageIcon deathFieldIcon = new ImageIcon(pfad + "/Images/Style-Classic_Death_Field.png");
