@@ -18,14 +18,15 @@ public class Application {
 		@SuppressWarnings("unused")
 		ImageLoader imageLoader = new ImageLoader("Steven");
 
-		// 1=new 2=file
-		int mode = 1;
+		
+		int mode = defineMode();
 		int windowSize = 600;
 
 		int[][] map;
 
-		if (mode == 1) {
-			map = MapController.generateBlankMap(60);
+		if (mode == 0) {
+			int mapSize = Integer.parseInt(JOptionPane.showInputDialog("Size of Map:"));
+			map = MapController.generateBlankMap(mapSize);
 		} else {
 			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
 			map = FileController.parseMapFromFile(fileName);
@@ -37,6 +38,14 @@ public class Application {
 		windowSize = windowSize % map.length == 0 ? windowSize : windowSize + (map.length - (windowSize % map.length));
 
 		MainWindow mainW = new MainWindow(map, windowSize);
+	}
+
+	private static int defineMode() {
+		Object[] options = { "Neue Map", "Laden" };
+		return JOptionPane.showOptionDialog(null, "New map or load map?", "Map Builder",
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, // do not use a custom Icon
+				options, // the titles of buttons
+				options[0]);
 	}
 
 }
