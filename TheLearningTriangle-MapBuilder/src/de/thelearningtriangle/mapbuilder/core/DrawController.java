@@ -7,8 +7,23 @@ import java.awt.Image;
 
 import de.thelearningtriangle.mapbuilder.ui.ImageLoader;
 
+/**
+ * <b>DrawController</b> controls the different tasks to draw specific things.
+ * It is used by the OverworldPanel.
+ * 
+ * @author Marco Mueller
+ *
+ */
 public class DrawController {
 
+	/**
+	 * this method creates the menu of the application. It contains the controls and
+	 * an explanation.
+	 * 
+	 * @param Graphics
+	 *            g
+	 * @author Marco Mueller
+	 */
 	public static void drawMenu(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.fillRect(60, 60, 300, 320);
@@ -27,6 +42,18 @@ public class DrawController {
 		g.drawString("C - Close/open this menu", 70, 360);
 	}
 
+	/**
+	 * this method draws the bottom line which contains information about the actual
+	 * field and important controls.
+	 * 
+	 * @param windowSize
+	 *            - the application window size
+	 * @param mouseController
+	 *            - the mouse listener
+	 * @param g
+	 *            - Graphics
+	 * @author Marco Mueller
+	 */
 	public static void drawBottomLine(int windowSize, MouseController mouseController, Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, windowSize, windowSize, 40);
@@ -62,6 +89,20 @@ public class DrawController {
 		g.drawString("Actual MouseMove-Field: " + fieldType, 15, windowSize + 33);
 	}
 
+	/**
+	 * this method finds the correct image for a given map position
+	 * 
+	 * @param g
+	 *            - Graphics
+	 * @param rowNumber
+	 *            - actual row position
+	 * @param columnNumber
+	 *            - actual column map
+	 * @param map
+	 *            - the actual game map
+	 * @return the correct image which should be drawn at the given map position
+	 * @author Marco Mueller
+	 */
 	public static Image findMatchingImage(Graphics g, int rowNumber, int columnNumber, int[][] map) {
 
 		Image fieldImage = null;

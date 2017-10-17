@@ -9,21 +9,28 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileController
-{
+/**
+ * this class loads and writes map from/in files
+ * 
+ * @author Marco Mueller
+ *
+ */
+public class FileController {
 
-	//information from author: bad usage of arrays. TODO change later to better data type
-	
+	// information from author: bad usage of arrays. TODO change later to better
+	// data type
+
 	/**
 	 * this method reads a file and creates an int-Arrays from the values
-	 * @return int[][]>
+	 * 
+	 * @return int[][] array, which contains the field types from the map as int
+	 *         values
 	 * @author Marco Mueller
 	 * @param fileName
 	 */
-	public static int[][] parseMapFromFile(String fileName)
-	{
+	public static int[][] parseMapFromFile(String fileName) {
 
-		String file = System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/"+fileName;
+		String file = System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/" + fileName;
 		BufferedReader br = null;
 		String splitChar = ",";
 
@@ -31,46 +38,35 @@ public class FileController
 
 		List<String[]> fileData = new ArrayList<String[]>();
 		int[][] map = null;
-		
-		try
-		{
+
+		try {
 
 			br = new BufferedReader(new FileReader(file));
 
-			while ((line = br.readLine()) != null)
-			{
+			while ((line = br.readLine()) != null) {
 
 				String[] oneLineOfData = line.split(splitChar);
 				fileData.add(oneLineOfData);
 
 			}
-			
+
 			map = new int[fileData.size()][fileData.size()];
-			
-			for (int i = 0; i < map.length; i++)
-			{
-				for (int j = 0; j < map.length; j++)
-				{
+
+			for (int i = 0; i < map.length; i++) {
+				for (int j = 0; j < map.length; j++) {
 					map[i][j] = Integer.parseInt(fileData.get(i)[j]);
 				}
 			}
-			
 
-		} catch (FileNotFoundException e)
-		{
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
-		} finally
-		{
-			if (br != null)
-			{
-				try
-				{
+		} finally {
+			if (br != null) {
+				try {
 					br.close();
-				} catch (IOException e)
-				{
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -80,39 +76,41 @@ public class FileController
 
 	}
 
-	public static void parseFileFromMap(int[][] map, String fileName)
-	{
+	/**
+	 * creates a file from a given map
+	 * 
+	 * @param map
+	 * @param fileName
+	 * @author Marco Mueller
+	 */
+	public static void parseFileFromMap(int[][] map, String fileName) {
 		PrintWriter fileWriter = null;
 
-		try
-		{
+		try {
 
-			fileWriter = new PrintWriter(new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/"+fileName));
+			fileWriter = new PrintWriter(
+					new FileWriter(System.getProperty("user.dir").replace('\\', '/') + "/MapFiles/" + fileName));
 
-			for (int i = 0; i < map.length; i++)
-			{
-				for (int j = 0; j < map.length; j++)
-				{
-						fileWriter.print(""+map[i][j]);
-					
-					if(j<map.length-1){
+			for (int i = 0; i < map.length; i++) {
+				for (int j = 0; j < map.length; j++) {
+					fileWriter.print("" + map[i][j]);
+
+					if (j < map.length - 1) {
 						fileWriter.print(",");
 					}
-					
+
 				}
-				
+
 				fileWriter.println();
 			}
 
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
-		} finally
-		{			if (fileWriter != null)
+		} finally {
+			if (fileWriter != null)
 				fileWriter.close();
 		}
 
 	}
-	
-	
+
 }

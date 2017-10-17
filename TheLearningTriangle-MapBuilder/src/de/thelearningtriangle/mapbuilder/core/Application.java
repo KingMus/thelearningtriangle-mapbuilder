@@ -7,6 +7,12 @@ import de.thelearningtriangle.mapbuilder.ui.MainWindow;
 
 public class Application {
 
+	/*
+	 * TODO General:
+	 * 
+	 * - Generate Maps from .jpg or so - Resize window after application start
+	 */
+
 	public static void main(String[] args) {
 
 		@SuppressWarnings("unused")

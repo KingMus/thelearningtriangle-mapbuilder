@@ -8,6 +8,12 @@ import javax.swing.JPanel;
 import de.thelearningtriangle.mapbuilder.core.DrawController;
 import de.thelearningtriangle.mapbuilder.core.MouseController;
 
+/**
+ * the implementation of the main panel
+ * 
+ * @author Marco Mueller
+ *
+ */
 public class OverworldPanel extends JPanel {
 
 	private int[][] map;
@@ -42,12 +48,25 @@ public class OverworldPanel extends JPanel {
 
 	}
 
+	/**
+	 * draws the whole game
+	 * 
+	 * @param g
+	 *            - Graphics
+	 * @param map
+	 *            - the game map
+	 */
 	private void drawOverworld(Graphics g, int[][] map) {
 
+		DrawController.drawBottomLine(windowSize, mouseController, g);
+
+		if (controlsEnabled) {
+			DrawController.drawMenu(g);
+		}
+
+		// draw game map with matching field and draw grid when activated
 		for (int rowNumber = 0; rowNumber < map.length; rowNumber++) {
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++) {
-
-				DrawController.drawBottomLine(windowSize, mouseController, g);
 
 				g.drawImage(DrawController.findMatchingImage(g, rowNumber, columnNumber, map),
 						rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
@@ -58,15 +77,11 @@ public class OverworldPanel extends JPanel {
 					g.drawRect(rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
 							windowSize / map.length, windowSize / map.length);
 				}
-
-				if (controlsEnabled) {
-					DrawController.drawMenu(g);
-				}
-
 			}
 		}
 	}
 
+	// getters and setters
 	public int[][] getMap() {
 		return map;
 	}

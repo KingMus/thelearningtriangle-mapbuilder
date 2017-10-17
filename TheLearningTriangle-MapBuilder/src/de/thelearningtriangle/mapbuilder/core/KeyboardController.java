@@ -9,62 +9,65 @@ import de.thelearningtriangle.mapbuilder.ui.ImageLoader;
 import de.thelearningtriangle.mapbuilder.ui.MainWindow;
 import de.thelearningtriangle.mapbuilder.ui.OverworldPanel;
 
-public class KeyboardController implements KeyListener
-{
+/**
+ * this class monitors the keyboard and reacts when specific actions happen. It
+ * uses the KeyListener methods.
+ * 
+ * @author Marco Mueller
+ *
+ */
+public class KeyboardController implements KeyListener {
 
 	private MainWindow mainWindow;
-	private int decider=0;
+	private int decider = 0;
 
-	public KeyboardController(MainWindow mainWindow)
-	{
+	public KeyboardController(MainWindow mainWindow) {
 
 		this.mainWindow = mainWindow;
 
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e)
-	{
+	public void keyPressed(KeyEvent e) {
 
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		if (e.getKeyCode() == KeyEvent.VK_G)
-		{
+	public void keyReleased(KeyEvent e) {
+		// if G is pressed, change grid mode
+		if (e.getKeyCode() == KeyEvent.VK_G) {
 			mainWindow.getOverworldPanel().setGridEnabled(!mainWindow.getOverworldPanel().isGridEnabled());
 		}
-		
-		if (e.getKeyCode() == KeyEvent.VK_I)
-		{
+
+		// if I is pressed, change image mode
+		if (e.getKeyCode() == KeyEvent.VK_I) {
 			decider = decider++ >= 2 ? 0 : decider++;
 			String newStyle;
 			switch (decider) {
 			case 0:
-				newStyle="Steven";
+				newStyle = "Steven";
 				break;
 			case 1:
-				newStyle="Classic";
+				newStyle = "Classic";
 				break;
 			case 2:
-				newStyle="RPG";
+				newStyle = "RPG";
 				break;
 			default:
-				newStyle="Steven";
+				newStyle = "Steven";
 				break;
 			}
 			ImageLoader imageLoader = new ImageLoader(newStyle);
 			mainWindow.getOverworldPanel().setImageEnabled(!mainWindow.getOverworldPanel().isImageEnabled());
 		}
-		
-		if (e.getKeyCode() == KeyEvent.VK_C)
-		{
+
+		// if C is pressed, change control menu mode
+		if (e.getKeyCode() == KeyEvent.VK_C) {
 			mainWindow.getOverworldPanel().setControlsEnabled(!mainWindow.getOverworldPanel().isControlsEnabled());
 		}
-		
-		if (e.getKeyCode() == KeyEvent.VK_S)
-		{
+
+		// if S is pressed, start save action
+		if (e.getKeyCode() == KeyEvent.VK_S) {
 			String fileName = JOptionPane.showInputDialog("Bennene deine Map");
 			FileController.parseFileFromMap(mainWindow.getOverworldPanel().getMap(), fileName);
 		}
@@ -72,8 +75,7 @@ public class KeyboardController implements KeyListener
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e)
-	{
+	public void keyTyped(KeyEvent e) {
 
 	}
 

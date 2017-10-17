@@ -6,6 +6,12 @@ import javax.swing.JFrame;
 
 import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 
+/**
+ * the implementation of the window
+ * 
+ * @author Marco Mueller
+ *
+ */
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 	private OverworldPanel overworldPanel;
@@ -14,6 +20,7 @@ public class MainWindow extends JFrame {
 
 		overworldPanel = new OverworldPanel(map, windowSize);
 
+		// define window
 		this.setSize(windowSize + 6, windowSize + 69);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
