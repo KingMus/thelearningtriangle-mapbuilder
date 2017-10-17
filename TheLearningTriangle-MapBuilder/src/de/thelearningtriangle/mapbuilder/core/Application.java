@@ -12,13 +12,13 @@ public class Application
 
 		// 1=new 2=file
 		int mode = 1;
-		int windowSize=900;
+		int windowSize=600;
 		
 		int[][] map;
 
 		if (mode == 1)
 		{
-			map = MapController.generateBlankMap(70);
+			map = MapController.generateBlankMap(20);
 		} else {
 			String fileName = JOptionPane.showInputDialog("Welche Datei laden?");
 			map = FileController.parseMapFromFile(fileName);

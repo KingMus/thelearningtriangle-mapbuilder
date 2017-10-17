@@ -22,7 +22,7 @@ public class MainWindow extends JFrame
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new GridLayout());
-		this.setTitle("The Learning Triangle");
+		this.setTitle("The Learning Triangle - Map Builder");
 		this.add(overworldPanel);
 		this.addKeyListener(new KeyboardController(this));
 		this.setVisible(true);
