@@ -24,7 +24,7 @@ public class Application {
 		ImageLoader imageLoader = new ImageLoader("Stesty");
 
 		int mode = defineMode();
-		int windowSize = 900;
+		int windowSize = 600;
 
 		int[][] map;
 
