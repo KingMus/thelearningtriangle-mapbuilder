@@ -1,5 +1,8 @@
 package de.thelearningtriangle.mapbuilder.core;
 
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  * this class controls actions for the game map
  * 
@@ -32,6 +35,32 @@ public class MapController {
 		}
 
 		return map;
+	}
+	
+	public static int[][] getMapWithMode() {
+		
+		int mode = defineMode();
+
+		int[][] map;
+
+		if (mode == 0) {
+			int mapSize = Integer.parseInt(JOptionPane.showInputDialog("Size of Map:"));
+			map = MapController.generateBlankMap(mapSize);
+		} else {
+			JFileChooser fc = new JFileChooser();
+			fc.showOpenDialog(null);
+			map = FileController.parseMapFromFile(fc.getSelectedFile());
+		}
+
+		return map;
+	}
+	
+	private static int defineMode() {
+		Object[] options = { "New...", "Load..." };
+		return JOptionPane.showOptionDialog(null, "New map or load map?", "Map Builder",
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, // do not use a custom Icon
+				options, // the titles of buttons
+				options[0]);
 	}
 
 }
