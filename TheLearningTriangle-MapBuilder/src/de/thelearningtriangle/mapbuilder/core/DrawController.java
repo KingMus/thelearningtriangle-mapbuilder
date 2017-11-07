@@ -133,4 +133,19 @@ public class DrawController {
 		return fieldImage;
 	}
 
+	
+	/**
+	 * ensure that windowSize divided through worldSize is even (necessary for UI).
+	 * If it is, keep everything the same. If it is not, make it even
+	 * 
+	 * @author Marco Mueller
+	 * @param windowSize
+	 * @param map
+	 * @return the new windowsize
+	 */
+	public static int calculateWindowSize(int[][] map) {
+		int windowSize = 600;
+		windowSize = windowSize % map.length == 0 ? windowSize : windowSize + (map.length - (windowSize % map.length));
+		return windowSize;
+	}
 }

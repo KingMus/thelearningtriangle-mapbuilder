@@ -37,7 +37,12 @@ public class MapController {
 		return map;
 	}
 	
-	public static int[][] getMapWithMode() {
+	/**
+	 * find a map through a mode. Generate a new blank map or load a map from file are the different possibilities.
+	 * @author Marco Mueller
+	 * @return
+	 */
+	public static int[][] getWorldMap() {
 		
 		int mode = defineMode();
 
@@ -55,6 +60,11 @@ public class MapController {
 		return map;
 	}
 	
+	/**
+	 * choose mode through user interaction (new map or load map from file).
+	 * @author Marco Mueller
+	 * @return a value for mode
+	 */
 	private static int defineMode() {
 		Object[] options = { "New...", "Load..." };
 		return JOptionPane.showOptionDialog(null, "New map or load map?", "Map Builder",
