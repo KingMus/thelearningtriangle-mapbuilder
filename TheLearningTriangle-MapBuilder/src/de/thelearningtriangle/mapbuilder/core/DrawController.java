@@ -103,11 +103,11 @@ public class DrawController {
 	 * @return the correct image which should be drawn at the given map position
 	 * @author Marco Mueller
 	 */
-	public static Image findMatchingImage(int rowNumber, int columnNumber, int[][] map) {
+	public static Image findMatchingImage(int rowNumber, int columnNumber, Field[][] map) {
 
 		Image fieldImage = null;
 
-		switch (map[columnNumber][rowNumber]) {
+		switch (map[columnNumber][rowNumber].getValue()) {
 		case 1:
 			fieldImage = ImageLoader.normalField;
 			break;

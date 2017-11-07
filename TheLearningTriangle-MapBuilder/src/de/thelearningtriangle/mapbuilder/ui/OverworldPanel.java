@@ -66,7 +66,7 @@ public class OverworldPanel extends JPanel {
 		for (int rowNumber = 0; rowNumber < map.length; rowNumber++) {
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++) {
 
-				g.drawImage(map[columnNumber][rowNumber].getImage(),
+				g.drawImage(DrawController.findMatchingImage(rowNumber, columnNumber, map),
 						rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
 						windowSize / map.length, windowSize / map.length, this);
 

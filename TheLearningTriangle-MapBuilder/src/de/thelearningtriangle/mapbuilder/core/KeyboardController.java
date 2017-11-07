@@ -67,6 +67,7 @@ public class KeyboardController implements KeyListener {
 				break;
 			}
 			ImageLoader imageLoader = new ImageLoader(newStyle);
+
 			mainWindow.getOverworldPanel().setImageEnabled(!mainWindow.getOverworldPanel().isImageEnabled());
 		}
 
