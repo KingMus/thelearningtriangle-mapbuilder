@@ -15,6 +15,10 @@ public enum Field {
 	
 	private static final Map<Integer, Field> map = new HashMap<>(values().length, 1);
 
+	static {
+	    for (Field field : values()) map.put(field.value, field);
+	  }
+	
 	private Field(int value, Image image) {
 		this.value = value;
 		this.image = image;
