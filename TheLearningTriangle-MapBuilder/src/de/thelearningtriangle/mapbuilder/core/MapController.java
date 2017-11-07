@@ -18,18 +18,18 @@ public class MapController {
 	 *            - The actual world size (world is always a square)
 	 * @return two-dimensional int-array, which is a blank map
 	 */
-	public static int[][] generateBlankMap(int worldSize) {
+	public static Field[][] generateBlankMap(int worldSize) {
 
-		int[][] map = new int[worldSize][worldSize];
+		Field[][] map = new Field[worldSize][worldSize];
 
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
 
-				map[i][j] = 1;
+				map[i][j] = Field.NORMAL;
 
 				// if field is at the edge, change it to a wall
 				if (i == 0 || j == 0 || i == map.length - 1 || j == map.length - 1) {
-					map[i][j] = 2;
+					map[i][j] = Field.WALL;
 				}
 			}
 		}
@@ -42,11 +42,11 @@ public class MapController {
 	 * @author Marco Mueller
 	 * @return
 	 */
-	public static int[][] getWorldMap() {
+	public static Field[][] getWorldMap() {
 		
 		int mode = defineMode();
 
-		int[][] map;
+		Field[][] map;
 
 		if (mode == 0) {
 			int mapSize = Integer.parseInt(JOptionPane.showInputDialog("Size of Map:"));

@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import de.thelearningtriangle.mapbuilder.core.DrawController;
+import de.thelearningtriangle.mapbuilder.core.Field;
 import de.thelearningtriangle.mapbuilder.core.MouseController;
 
 /**
@@ -16,7 +17,7 @@ import de.thelearningtriangle.mapbuilder.core.MouseController;
  */
 public class OverworldPanel extends JPanel {
 
-	private int[][] map;
+	private Field[][] map;
 	private boolean gridEnabled = false;
 	private boolean imageEnabled = false;
 	private boolean controlsEnabled = false;
@@ -24,7 +25,7 @@ public class OverworldPanel extends JPanel {
 
 	private MouseController mouseController;
 
-	public OverworldPanel(int[][] map, int windowSize) {
+	public OverworldPanel(Field[][] map, int windowSize) {
 		this.map = map;
 		this.windowSize = windowSize;
 
@@ -56,7 +57,7 @@ public class OverworldPanel extends JPanel {
 	 * @param map
 	 *            - the game map
 	 */
-	private void drawOverworld(Graphics g, int[][] map) {
+	private void drawOverworld(Graphics g, Field[][] map) {
 
 		DrawController.drawBottomLine(windowSize, mouseController, g);
 
@@ -65,7 +66,7 @@ public class OverworldPanel extends JPanel {
 		for (int rowNumber = 0; rowNumber < map.length; rowNumber++) {
 			for (int columnNumber = 0; columnNumber < map.length; columnNumber++) {
 
-				g.drawImage(DrawController.findMatchingImage(g, rowNumber, columnNumber, map),
+				g.drawImage(map[columnNumber][rowNumber].getImage(),
 						rowNumber * windowSize / map.length, columnNumber * windowSize / map.length,
 						windowSize / map.length, windowSize / map.length, this);
 
@@ -83,11 +84,11 @@ public class OverworldPanel extends JPanel {
 	}
 
 	// getters and setters
-	public int[][] getMap() {
+	public Field[][] getMap() {
 		return map;
 	}
 
-	public void setMap(int[][] map) {
+	public void setMap(Field[][] map) {
 		this.map = map;
 	}
 

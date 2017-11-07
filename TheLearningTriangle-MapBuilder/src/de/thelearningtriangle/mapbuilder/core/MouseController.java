@@ -4,8 +4,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JOptionPane;
-
 import de.thelearningtriangle.mapbuilder.ui.OverworldPanel;
 
 /**
@@ -35,7 +33,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 		} else {
 
-			int[][] map = overworldPanel.getMap();
+			Field[][] map = overworldPanel.getMap();
 
 			// use mouse position to get the clicked field in map
 			int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
@@ -48,11 +46,13 @@ public class MouseController implements MouseListener, MouseMotionListener {
 				// right mouse button clicked? increase field type
 				// shift down? set spawn point
 				if (e.getButton() == MouseEvent.BUTTON3) {
-					map[fieldY][fieldX] = map[fieldY][fieldX]-- < 2 ? 5 : map[fieldY][fieldX]--;
+					int newFieldValue = map[fieldY][fieldX].getValue() - 1 < 2 ? 5 : map[fieldY][fieldX].getValue() - 1;
+					map[fieldY][fieldX] = Field.of(newFieldValue);
 				} else if (e.isShiftDown()) {
-					map[fieldY][fieldX] = 9;
+					map[fieldY][fieldX].setValue(9);
 				} else {
-					map[fieldY][fieldX] = map[fieldY][fieldX]++ > 4 ? 1 : map[fieldY][fieldX]++;
+					int newFieldValue = map[fieldY][fieldX].getValue()+1 > 4 ? 1 : map[fieldY][fieldX].getValue()+1;
+					map[fieldY][fieldX] = Field.of(newFieldValue);
 				}
 
 			}
@@ -89,7 +89,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		int[][] map = overworldPanel.getMap();
+		Field[][] map = overworldPanel.getMap();
 
 		// use mouse position to get the actual field in map
 		int fieldX = e.getX() / (overworldPanel.getWindowSize() / map.length);
@@ -97,7 +97,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 		// only change field when it isnt a field at the edge
 		if (!(fieldX == 0 || fieldY == 0 || fieldX == map.length - 1 || fieldY == map.length - 1)) {
-			map[fieldY][fieldX] = actualFieldToDraw;
+			map[fieldY][fieldX] = Field.of(actualFieldToDraw);
 		}
 
 		overworldPanel.setMap(map);

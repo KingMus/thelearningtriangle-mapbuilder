@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 import de.thelearningtriangle.mapbuilder.core.DrawController;
+import de.thelearningtriangle.mapbuilder.core.Field;
 import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 
 /**
@@ -17,7 +18,7 @@ import de.thelearningtriangle.mapbuilder.core.KeyboardController;
 public class MainWindow extends JFrame {
 	private OverworldPanel overworldPanel;
 
-	public MainWindow(int[][] map) {
+	public MainWindow(Field[][] map) {
 
 		int windowSize = DrawController.calculateWindowSize(map);
 		

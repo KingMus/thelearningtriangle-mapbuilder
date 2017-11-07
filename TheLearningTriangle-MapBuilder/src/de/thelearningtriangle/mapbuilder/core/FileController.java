@@ -32,7 +32,7 @@ public class FileController {
 	 * @param file
 	 *            - a file which should be used
 	 */
-	public static int[][] parseMapFromFile(File file) {
+	public static Field[][] parseMapFromFile(File file) {
 
 		BufferedReader br = null;
 		String splitChar = ",";
@@ -40,7 +40,7 @@ public class FileController {
 		String line = "";
 
 		List<String[]> fileData = new ArrayList<String[]>();
-		int[][] map = null;
+		Field[][] map = null;
 
 		try {
 
@@ -53,11 +53,11 @@ public class FileController {
 
 			}
 
-			map = new int[fileData.size()][fileData.size()];
+			map = new Field[fileData.size()][fileData.size()];
 
 			for (int i = 0; i < map.length; i++) {
 				for (int j = 0; j < map.length; j++) {
-					map[i][j] = Integer.parseInt(fileData.get(i)[j]);
+					map[i][j] = Field.of(Integer.parseInt(fileData.get(i)[j]));
 				}
 			}
 
@@ -86,7 +86,7 @@ public class FileController {
 	 *            - the game map
 	 * @author Marco Mueller
 	 */
-	public static void parseFileFromMap(int[][] map) {
+	public static void parseFileFromMap(Field[][] map) {
 		PrintWriter fileWriter = null;
 
 		try {
@@ -97,7 +97,7 @@ public class FileController {
 
 			for (int i = 0; i < map.length; i++) {
 				for (int j = 0; j < map.length; j++) {
-					fileWriter.print("" + map[i][j]);
+					fileWriter.print("" + map[i][j].getValue());
 
 					if (j < map.length - 1) {
 						fileWriter.print(",");

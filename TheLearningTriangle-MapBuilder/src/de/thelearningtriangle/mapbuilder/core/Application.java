@@ -10,7 +10,7 @@ public class Application {
 		@SuppressWarnings("unused")
 		ImageLoader imageLoader = new ImageLoader("Stesty");
 
-		int[][] map = MapController.getWorldMap();
+		Field[][] map = MapController.getWorldMap();
 
 		MainWindow mainW = new MainWindow(map);
 	}

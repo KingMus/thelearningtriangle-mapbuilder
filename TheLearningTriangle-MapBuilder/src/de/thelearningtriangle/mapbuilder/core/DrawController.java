@@ -103,7 +103,7 @@ public class DrawController {
 	 * @return the correct image which should be drawn at the given map position
 	 * @author Marco Mueller
 	 */
-	public static Image findMatchingImage(Graphics g, int rowNumber, int columnNumber, int[][] map) {
+	public static Image findMatchingImage(int rowNumber, int columnNumber, int[][] map) {
 
 		Image fieldImage = null;
 
@@ -143,7 +143,7 @@ public class DrawController {
 	 * @param map
 	 * @return the new windowsize
 	 */
-	public static int calculateWindowSize(int[][] map) {
+	public static int calculateWindowSize(Field[][] map) {
 		int windowSize = 600;
 		windowSize = windowSize % map.length == 0 ? windowSize : windowSize + (map.length - (windowSize % map.length));
 		return windowSize;
